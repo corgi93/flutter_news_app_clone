@@ -93,10 +93,6 @@ presentation계층도 domain계층에 의존 - bloc이 주입(injected)된 domai
 usecase는 어떻게 사용되냐면 repository에 의존하는 개별 클래스로, 하나의 정확한 작업(기사 가져오기, data 게시, 로그인 등)만을 수행.
   usecase에 주입된 여러 repository를 취할 수 있고 bloc(viewmodel)은 그것에 주입된 여러 usecase를 사용할 수 있음.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
