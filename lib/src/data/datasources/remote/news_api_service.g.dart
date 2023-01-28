@@ -13,6 +13,7 @@ class _NewsApiService implements NewsApiService {
   }
 
   final Dio _dio;
+
   String? baseUrl;
 
   @override

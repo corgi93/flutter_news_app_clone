@@ -16,7 +16,7 @@ class ArticlesRepositoryImpl implements ArticlesRepository {
     ArticlesRequestParams params,
   ) async {
     try {
-      print("check!");
+      print("check!!");
       final httpResponse = await _newsApiService.getBreakingNewsArticles(
         apiKey: params.apiKey,
         country: params.country,
@@ -26,8 +26,6 @@ class ArticlesRepositoryImpl implements ArticlesRepository {
       );
 
       if (httpResponse.response.statusCode == HttpStatus.ok) {
-        // print("res:: ${httpResponse.response}");
-        // print("data::${httpResponse.data.articles}");
         return DataSuccess(httpResponse.data.articles);
       }
       return DataFailed(
@@ -41,5 +39,23 @@ class ArticlesRepositoryImpl implements ArticlesRepository {
     } on DioError catch (e) {
       return DataFailed(e);
     }
+  }
+
+  @override
+  Future<List<Article>> getSavedArticles() {
+    // TODO: implement getSavedArticles
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> removeArticle(Article article) {
+    // TODO: implement removeArticle
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> saveArticle(Article article) {
+    // TODO: implement saveArticle
+    throw UnimplementedError();
   }
 }

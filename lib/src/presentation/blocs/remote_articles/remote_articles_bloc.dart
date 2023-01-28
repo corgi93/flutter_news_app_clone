@@ -22,11 +22,10 @@ class RemoteArticlesBloc
 
   RemoteArticlesBloc(this._getArticlesUseCase)
       : super(const RemoteArticlesState()) {
-    // on<GetArticles>((event, emit) => emit(state + 1));
     on<GetArticles>(_onArticlesFetched);
   }
 
-  final List<Article> _articles = [];
+  // final List<Article> _articles = [];
   int _page = 1;
   static const int _pageSize = 20;
 
@@ -35,9 +34,10 @@ class RemoteArticlesBloc
     if (state.noMoreData) return;
 
     try {
-      emit(state.copyWith(status: ArticlesStatus.initial));
+      // emit(state.copyWith(status: ArticlesStatus.initial));
       if (state.status == ArticlesStatus.initial) {
         print("initial!!");
+        print("is empty ${state.articles.isNotEmpty}");
         // await로  데이터 불러오기
         final dataState = await _getArticlesUseCase(
           params: ArticlesRequestParams(page: _page),
@@ -46,10 +46,10 @@ class RemoteArticlesBloc
         return emit(state.copyWith(
           status: ArticlesStatus.success,
           articles: dataState.data,
-          noMoreData: false,
+          noMoreData: true,
         ));
       }
-      // dataState is DataSuccess && dataState.data.isNotEmpty
+
       // if (dataState is DataSuccess) {
       //   // 성공적으로 data 가져오면 List<Article>타입으로 받을 것
       //   final articles =
@@ -60,8 +60,8 @@ class RemoteArticlesBloc
       //
       //   RemoteArticlesDone(_articles, noMoreData: noMoreData);
       // }
-    } catch (_) {
-      // RemoteArticlesError(dataState.error);
+    } catch (error) {
+      emit(state.copyWith(status: ArticlesStatus.error));
     }
   }
 }

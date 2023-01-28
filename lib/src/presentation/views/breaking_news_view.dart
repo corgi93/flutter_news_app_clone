@@ -50,12 +50,12 @@ class BreakingNewsView extends HookWidget {
     return BlocBuilder<RemoteArticlesBloc, RemoteArticlesState>(
       builder: (context, state) {
         if (state.status == ArticlesStatus.initial) {
-          print("status 변경: ${state.status}");
+          print("status 변경1: ${state.status}");
           return const Center(child: CupertinoActivityIndicator());
         }
 
         if (state.status == ArticlesStatus.success) {
-          print("status 변경: ${state.status}");
+          print("status 변경2: ${state.status}");
           return _buildArticle(
             scrollController,
             state.articles,
@@ -63,7 +63,7 @@ class BreakingNewsView extends HookWidget {
           );
         }
         if (state.status == ArticlesStatus.error) {
-          print("status 변경: ${state.status}");
+          print("status 변경3: ${state.status}");
           return const Center(child: Icon(Ionicons.refresh));
         }
 
@@ -100,7 +100,7 @@ class BreakingNewsView extends HookWidget {
           const SizedBox(),
         ] else ...[
           const Padding(
-            padding: EdgeInsets.symmetric(vertical: 14),
+            padding: EdgeInsets.symmetric(vertical: 1),
             child: CupertinoActivityIndicator(),
           ),
         ]
@@ -116,6 +116,7 @@ class BreakingNewsView extends HookWidget {
     final state = remoteArticleBloc.blocProcessState;
 
     if (currentScroll == maxScroll && state == BlocProcessState.idle) {
+      print("maxScroll!");
       remoteArticleBloc.add(const GetArticles()); // bloc 수정
     }
   }
