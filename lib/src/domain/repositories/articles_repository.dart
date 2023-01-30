@@ -8,13 +8,12 @@ abstract class ArticlesRepository {
   Future<DataState<List<Article>>> getBreakingNewsArticles(
       ArticlesRequestParams params);
 
-  // Database
-  // GET
-  // Future<List<Article>> getSavedArticles();
+  // Database methods
+  Future<List<Article>> getSavedArticles();
 
-  // PUT
-  // Future<void> saveArticle(Article article);
+  // add
+  Future<void> saveArticle(Article article);
 
-  // DELETE
-  // Future<void> removeArticle(Article article);
+  // remove
+  Future<void> removeArticle(Article article);
 }

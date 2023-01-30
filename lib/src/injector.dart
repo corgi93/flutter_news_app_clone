@@ -23,7 +23,8 @@ Future<void> initializeDependencies() async {
       signalsReady: true);
 
   injector.registerSingleton<ArticlesRepository>(
-      ArticlesRepositoryImpl(injector()));
+      // 생성자로 _newsApiService, _appDatabase 인자 2개가 필요하므로 injector()를 2개로 받음.
+      ArticlesRepositoryImpl(injector(), injector()));
 
   // UseCases
   injector

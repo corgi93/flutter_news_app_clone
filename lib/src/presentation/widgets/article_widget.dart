@@ -53,7 +53,7 @@ class ArticleWidget extends StatelessWidget {
             errorBuilder: (_, __, ___) {
               return const Center(
                 child: Text(
-                  '404\nNOT FOUND',
+                  '404\nNOT FOUND..',
                   textAlign: TextAlign.center,
                 ),
               );
