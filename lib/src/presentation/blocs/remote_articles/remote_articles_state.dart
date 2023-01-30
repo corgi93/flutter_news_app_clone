@@ -36,16 +36,3 @@ class RemoteArticlesState extends Equatable {
     );
   }
 }
-
-class RemoteArticlesLoading extends RemoteArticlesState {
-  const RemoteArticlesLoading();
-}
-
-class RemoteArticlesDone extends RemoteArticlesState {
-  const RemoteArticlesDone(List<Article> article, {required bool noMoreData})
-      : super(articles: article, noMoreData: noMoreData);
-}
-
-class RemoteArticlesError extends RemoteArticlesState {
-  const RemoteArticlesError(DioError error) : super(error: error);
-}
