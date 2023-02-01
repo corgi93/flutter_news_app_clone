@@ -122,6 +122,7 @@ class BreakingNewsView extends HookWidget {
   }
 
   void _onArticlePressed(BuildContext context, Article article) {
+    print("article::${article}");
     Navigator.pushNamed(context, '/ArticleDetailsView', arguments: article);
   }
 
