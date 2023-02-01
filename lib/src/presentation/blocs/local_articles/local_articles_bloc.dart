@@ -16,11 +16,11 @@ class LocalArticlesBloc extends Bloc<LocalArticlesEvent, LocalArticlesState> {
     this._saveArticleUseCase,
     this._removeArticleUseCase,
   ) : super(const LocalArticlesState()) {
-    on<GetLocalArticles>(_onLocalArticlesFetched);
+    on<GetAllSavedArticles>(_onLocalArticlesFetched);
   }
 
   Future<void> _onLocalArticlesFetched(
-      GetLocalArticles event, Emitter<LocalArticlesState> emit) async {
+      GetAllSavedArticles event, Emitter<LocalArticlesState> emit) async {
     if (state.status == LocalArticlesStatus.done) return;
     try {
       if (state.status == ArticlesStatus.loading) {
